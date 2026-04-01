@@ -1,12 +1,18 @@
 export default function ComplexDashboardLaynou({
-  children, users, revenue, notifications
+  children,
+  users,
+  revenue,
+  notifications,
+  login,
 }: {
   children: React.ReactNode;
   users: React.ReactNode;
   revenue: React.ReactNode;
   notifications: React.ReactNode;
+  login: React.ReactNode;
 }) {
-  return (
+  const isLoggedIn = true;
+  return isLoggedIn ? (
     <div>
       <div>{children}</div>
       <div style={{ display: "flex" }}>
@@ -17,5 +23,7 @@ export default function ComplexDashboardLaynou({
         <div style={{ display: "flex", flex: 1 }}>{notifications}</div>
       </div>
     </div>
-  ) ;
+  ) : (
+    login
+  );
 }
