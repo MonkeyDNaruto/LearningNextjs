@@ -1,0 +1,3 @@
+export default function Seecond() {
+  return <h1>My second blog</h1>
+}
