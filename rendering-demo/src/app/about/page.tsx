@@ -1,13 +1,9 @@
-// export const dynamic = "force-dynamic";
+import { cookies } from "next/headers";
 
-// export default function AboutPage() {
-//   console.log("About Server component")
-//   return <h1>About Page {new Date().toLocaleTimeString()}</h1>;
-// }
-
-
-export const dynamic = "force-dynamic";
-
-export default function AboutPage() {
+export default async function AboutPage() {
+  console.log("About Server component");
+  const cookiesStore = await cookies();
+  const theme = cookiesStore.get("theme");
+  console.log(theme);
   return <h1>About Page {new Date().toLocaleTimeString()}</h1>;
 }
