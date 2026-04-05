@@ -5,16 +5,18 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useTheme } from "@/src/components/theme-provider";
+import { clientSideFunction } from "@/src/utils/client-utils";
 
 export default function ClientRoutePage() {
   const theme = useTheme();
+  const result = clientSideFunction();
   // const settings = {
   //   dots: true,
   // };
   return (
     <>
       <div style={{ color: theme.colors.secondary }}>
-        <h1>Client route page</h1>
+        <h1>Client route page {result}</h1>
       </div>
       {/* <div className="image-slider-container">
         <Slider {...settings}>
