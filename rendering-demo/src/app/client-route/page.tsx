@@ -1,7 +1,3 @@
-// export default function ClientRoutePage() {
-//   return <h1>Client Route</h1>
-// }
-
 "use client";
 
 import React from "react";
@@ -12,15 +8,15 @@ import { useTheme } from "@/src/components/theme-provider";
 
 export default function ClientRoutePage() {
   const theme = useTheme();
-  const settings = {
-    dots: true,
-  };
+  // const settings = {
+  //   dots: true,
+  // };
   return (
     <>
-      <div style={{ color: theme.colors.primary }}>
+      <div style={{ color: theme.colors.secondary }}>
         <h1>Client route page</h1>
       </div>
-      <div className="image-slider-container">
+      {/* <div className="image-slider-container">
         <Slider {...settings}>
           <div>
             <img src="https://picsum.photos/400/200" />
@@ -35,7 +31,7 @@ export default function ClientRoutePage() {
             <img src="https://picsum.photos/400/200" />
           </div>
         </Slider>
-      </div>
+      </div> */}
     </>
   );
 }
