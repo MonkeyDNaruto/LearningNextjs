@@ -1,17 +1,8 @@
-import { addProduct } from "@/src/components/prisma-db";
+"use client";
+
 import { Submit } from "@/src/components/submit";
-import { redirect } from "next/navigation";
 import { useActionState } from "react";
-
-type Errors = {
-  title?: string;
-  price?: string;
-  description?: string;
-};
-
-type FormState = {
-  errors: Errors;
-};
+import { FormState, createProduct } from "@/src/actions/products";
 
 export default function AddProductPage() {
   const initialState: FormState = {
@@ -22,36 +13,6 @@ export default function AddProductPage() {
     createProduct,
     initialState
   );
-
-  async function createProduct(formData: FormData) {
-    "use server";
-
-    const title = formData.get("title") as string;
-    const price = formData.get("price") as string;
-    const description = formData.get("description") as string;
-
-    const errors: Errors = {};
-
-    if (!title) {
-      errors.title = "Title is required";
-    }
-
-    if (!price) {
-      errors.price = "Price is required";
-    }
-
-    if (!description) {
-      errors.description = "Description is required";
-    }
-
-    if (Object.keys(errors).length > 0) {
-      return { errors };
-    }
-
-    await addProduct(title, parseInt(price), description);
-
-    redirect("/product-db");
-  }
 
   return (
     <form action={formAction} className="p-4 space-y-4 max-w-96">
@@ -94,12 +55,12 @@ export default function AddProductPage() {
         )}
       </div>
       <button
-      type="submit"
-      className="block w-full p-2 text-white bg-blue-500 rounded disabled:bg-gray-500"
-      disabled={isPending}
-    >
-      Submit
-    </button>
+        type="submit"
+        className="block w-full p-2 text-white bg-blue-500 rounded disabled:bg-gray-500"
+        disabled={isPending}
+      >
+        Submit
+      </button>
       {/* <Submit /> */}
     </form>
   );
